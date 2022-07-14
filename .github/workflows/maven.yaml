@@ -14,7 +14,7 @@ jobs:
           name: working-dir
           path: ${{ github.workspace }}
 
-  build:
+  package-artifacts:
     runs-on: [ ubuntu-latest ]
     needs: setup
     steps:
@@ -23,7 +23,7 @@ jobs:
         with:
           name: working-dir
           path: ${{ github.workspace }}
-      - name: build-artifacts
+      - name: package-artifacts
         run: |
           mvn clean 
           mvn test
@@ -34,9 +34,9 @@ jobs:
           name: working-dir
           path: ${{ github.workspace }}
 
-  containerize:
+  containerize-artifacts:
     runs-on: [ ubuntu-latest ]
-    needs: setup
+    needs: package-artifacts
     steps:
       - name: download-artifacts
         uses: actions/download-artifact@v1
