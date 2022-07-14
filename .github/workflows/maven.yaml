@@ -1,0 +1,23 @@
+name: Maven Workflow
+
+on:
+  workflow_call:
+    inputs:
+      verbose:
+        required: false
+        default: true
+        type: string
+jobs:
+  setup:
+#    if: github.ref_name == 'main' || startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/PR-')
+#    runs-on: [self-hosted, python]
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: setup-app-clone
+        uses: actions/checkout@v3
+
+      - name: upload-artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: working-dir
+          path: ${{ github.workspace }}
