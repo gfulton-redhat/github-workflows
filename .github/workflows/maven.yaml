@@ -23,7 +23,8 @@ jobs:
         with:
           name: working-dir
           path: ${{ github.workspace }}
+      - name: build-artifacts
       - run: |
-          mvn clean install
+          mvn clean 
           mvn test
-          mvn site
+          mvn package
