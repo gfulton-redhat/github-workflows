@@ -23,3 +23,7 @@ jobs:
         with:
           name: working-dir
           path: ${{ github.workspace }}
+      - run: |
+          mvn clean install
+          mvn test
+          mvn site
