@@ -2,15 +2,8 @@ name: Maven Workflow
 
 on:
   workflow_call:
-    inputs:
-      verbose:
-        required: false
-        default: true
-        type: string
 jobs:
   setup:
-#    if: github.ref_name == 'main' || startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/PR-')
-#    runs-on: [self-hosted, python]
     runs-on: [ ubuntu-latest ]
     steps:
       - name: setup-app-clone
