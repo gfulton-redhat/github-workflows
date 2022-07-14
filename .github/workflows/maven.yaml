@@ -24,7 +24,7 @@ jobs:
           name: working-dir
           path: ${{ github.workspace }}
       - name: build-artifacts
-      - run: |
+        run: |
           mvn clean 
           mvn test
           mvn package
