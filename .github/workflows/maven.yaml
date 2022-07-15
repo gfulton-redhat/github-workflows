@@ -3,7 +3,7 @@ name: Maven Workflow
 on:
   workflow_call:
 jobs:
-  setup-build:
+  setup:
     runs-on: [ ubuntu-latest ]
     steps:
       - name: checkout-source
@@ -14,9 +14,9 @@ jobs:
           name: working-dir
           path: ${{ github.workspace }}
 
-  package-artifacts:
+  package:
     runs-on: [ ubuntu-latest ]
-    needs: package-artifacts
+    needs: package
     steps:
       - name: download-artifacts
         uses: actions/download-artifact@v1
