@@ -28,7 +28,7 @@ jobs:
       - name: podman-build
         run: podman build -t ${{ github.event.repository.name }}:${{ github.sha }} .
       - name: podman-push
-        run: podman push ${{ github.event.repository.name }}:${{ github.sha }}
+        run: podman push ${{ secrets.REPO_HOSTNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
       - name: upload-artifacts
         uses: actions/upload-artifact@v1
         with:
