@@ -14,7 +14,7 @@ jobs:
           name: working-dir
           path: ${{ github.workspace }}
 
-  build:
+  containerize:
     runs-on: [ ubuntu-latest ]
     needs: setup
     steps:
