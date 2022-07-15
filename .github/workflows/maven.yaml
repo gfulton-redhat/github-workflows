@@ -26,9 +26,9 @@ jobs:
       - name: podman-login
         run: podman login -u="${{ secrets.PODMAN_USERNAME }}" -p="${{ secrets.PODMAN_PASSWORD }}" ${{ secrets.REPO_HOSTNAME }}
       - name: podman-build
-        run: podman build -t ${{ secrets.REPO_USERNAME}}/${{ github.event.repository.name }}:${{ github.sha }} .
+        run: podman build -t ${{ secrets.REPO_USERNAME}}/${{ github.event.repository.name }} .
       - name: podman-push
-        run: podman push ${{ secrets.REPO_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
+        run: podman push ${{ secrets.REPO_USERNAME }}/${{ github.event.repository.name }}
       - name: upload-artifacts
         uses: actions/upload-artifact@v1
         with:
