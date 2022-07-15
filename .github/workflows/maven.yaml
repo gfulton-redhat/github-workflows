@@ -3,10 +3,10 @@ name: Maven Workflow
 on:
   workflow_call:
 jobs:
-  setup:
+  setup-build:
     runs-on: [ ubuntu-latest ]
     steps:
-      - name: setup-app-clone
+      - name: checkout-source
         uses: actions/checkout@v3
       - name: upload-artifacts
         uses: actions/upload-artifact@v1
