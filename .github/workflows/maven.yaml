@@ -32,7 +32,7 @@ jobs:
       - name: podman-tag
         run: podman tag ${{ github.event.repository.name }} ${{ secrets.REPO_HOSTNAME }}/${{ secrets.REPO_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
       - name: podman-push
-        run: podman push ${{ secrets.REPO_HOSTNAME }}/${{ secrets.REPO_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
+        run: podman push --creds="${{ secrets.PODMAN_USERNAME }}:${{ secrets.PODMAN_PASSWORD }}" ${{ secrets.REPO_HOSTNAME }}/${{ secrets.REPO_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
       - name: upload-artifacts
         uses: actions/upload-artifact@v1
         with:
