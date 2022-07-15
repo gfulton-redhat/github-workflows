@@ -25,9 +25,9 @@ jobs:
           path: ${{ github.workspace }}
       - name: package-artifacts
         run: |
-          mvn clean 
-          mvn test
-          mvn package
+          ./mvnw clean 
+          ./mvnw mvn test
+          ./mvnw mvn package
       - name: upload-artifacts
         uses: actions/upload-artifact@v1
         with:
@@ -44,8 +44,7 @@ jobs:
           name: working-dir
           path: ${{ github.workspace }}
       - name: build-container
-        run: |
-          podman info
+        run: podman build -t ${{ github.repository }}:${{ github.sha }} .
       - name: upload-artifacts
         uses: actions/upload-artifact@v1
         with:
