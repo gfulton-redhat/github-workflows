@@ -23,14 +23,14 @@ jobs:
         with:
           name: working-dir
           path: ${{ github.workspace }}
-      - name: podman-login
-        run: podman login -u="${{ secrets.PODMAN_USERNAME }}" -p="${{ secrets.PODMAN_PASSWORD }}" ${{ secrets.REPO_HOSTNAME }}
+#       - name: podman-login
+#         run: podman login -u="${{ secrets.PODMAN_USERNAME }}" -p="${{ secrets.PODMAN_PASSWORD }}" ${{ secrets.REPO_HOSTNAME }}
       - name: podman-build
         run: podman build -t ${{ github.event.repository.name }}:${{ github.sha }} -f Containerfile
       - name: podman-tag
         run: podman tag ${{ github.event.repository.name }} ${{ secrets.REPO_HOSTNAME }}/${{ secrets.REPO_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
-      - name: podman-push
-        run: podman push ${{ secrets.REPO_HOSTNAME }}/${{ secrets.REPO_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
+#       - name: podman-push
+#         run: podman push ${{ secrets.REPO_HOSTNAME }}/${{ secrets.REPO_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
       - name: upload-artifacts
         uses: actions/upload-artifact@v1
         with:
